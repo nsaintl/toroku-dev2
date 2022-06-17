@@ -36,3 +36,51 @@
     transform: rotate(360deg);
   }
 }
+
+input[type=range].slider {
+  -webkit-appearance: none;     /*nécessaire pour Chrome */
+  padding: 0;                   /* nécessaire pour IE */
+  font: inherit;                /* même rendu suivant font document */
+  outline: none;
+  color: #F20732;
+  opacity: 1;
+  box-sizing: border-box;       /* même modèle de boîte pour tous */
+  transition: opacity .2s;
+  cursor: pointer;
+  background-color: transparent;
+  height: 10px;
+}
+
+/* la zone de déplacement */
+input[type=range].slider::-webkit-slider-runnable-track {
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFFFFF;  /* supprimé définie sur l'input */
+}
+
+/* le curseur */
+input[type=range].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;       /* également nécessaire sur le curseur */
+  border: none;
+  border-radius: 50%;               /* pris en compte sur Webkit et Edge */
+  background: currentColor;       /* pris en compte sur Webkit only */
+  height: 200%;
+  aspect-ratio: 1;
+  margin-top: -5px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #F20732;
+}

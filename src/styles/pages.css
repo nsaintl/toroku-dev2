@@ -1,0 +1,28 @@
+body {
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    background-color: #161616;
+    color: #FFFFFF;
+}
+
+.background {
+    width: 100%;
+    height: calc(100vh - 76px);
+    overflow: auto;
+}
+
+form {
+    padding: 5px 0;
+}
+
+.padding-right {
+    padding-right: 2px;
+}
+
+.padding-left {
+    padding-left: 2px;
+}
+
+.flex {
+    flex: 1;
+}

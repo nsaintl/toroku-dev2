@@ -1,0 +1,170 @@
+img {
+    height: 150px;
+    aspect-ratio: 1;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="submit"] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #F20732;
+    color: #FFFFFF;
+}
+
+.button:hover {
+    background-color: #F20732;
+    color: #FFFFFF;
+}
+
+input, .input, select {
+    display: flex;
+    height: 30px;
+    width: calc(100% - 10px * 2);
+    border-radius: 100px;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    background-color: #E1EDFF;
+    border: 0;
+    outline: none;
+    font-family: inherit;
+}
+
+select {
+    width: 100%;
+}
+
+.input {
+    color: #000000;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+textarea {
+    display: flex;
+    height: 100px;
+    width: calc(100% - 10px * 2);
+    max-width: calc(100% - 10px * 2);
+    min-width: calc(100% - 10px * 2);
+    border-radius: 15px 15px 0 15px;
+    padding: 5px 10px 5px 10px;
+    font-size: 16px;
+    background-color: #E1EDFF;
+    border: 0;
+    outline: none;
+    font-family: inherit;
+}
+
+input:focus, textarea {
+    border: 0;
+}
+
+.inputContainer {
+    margin: 10px 0 10px 0;
+    padding: 0 50px 0 50px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.textLabel {
+    flex: 1;
+    display: flex;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin-left: 5px;
+    margin-bottom: 1px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.check-box.active {
+    border-color: #F20732;
+    background-color: #F20732;
+    color: #FFFFFF;
+}
+
+.check-box.active:hover {
+    border-color: #999999;
+    background-color: #F20732;
+    color: #999999;
+}
+
+.inactive, .check-box.inactive:hover {
+    border-color: #F20732;
+    background-color: #161616;
+    color: #FFFFFF;
+}
+
+input[type="button"].active, input[type="button"]:hover, input[type="button"].endInput:hover {
+    background-color: #F20732;
+    color: #FFFFFF;
+}
+
+input[type="button"] {
+    height: 30px;
+    font-size: 16px;
+    background-color: #161616;
+    color: #999999;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+input[type="button"].check-box {
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-width: 1px;
+    border-style: solid;
+}
+
+input[type="button"].endInput {
+    width: auto;
+    height: 30px;
+    font-size: 16px;
+    background-color: #161616;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #E1EDFF;
+    border-width: 2px;
+}
+
+.endInput {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.startInput {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.languages {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border-style: solid;
+    border-color: #999999;
+    border-radius: 5px;
+    margin-right: 5px;
+}

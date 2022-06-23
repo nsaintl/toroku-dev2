@@ -1,12 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import PropTypes from 'prop-types';
 import React from "react";
-import LanguageButton from "./LanguageButton";
-import {tabsLanguages} from "../../Constant";
-import Button from "./Button";
 
 export default function NumericInput(props) {
 
-    const { initialValue, placeholder, onChange, label, min, max, canNull, start, end } = props;
+    const { initialValue, placeholder, onChange, label, min, max, canNull, start, end, disabled, reset } = props;
 
     const [text, setText] = React.useState(initialValue);
 
@@ -16,17 +14,23 @@ export default function NumericInput(props) {
         onChange(value === "" ? null : value);
     }
 
+    React.useEffect(() => {
+        setText(initialValue);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [reset]);
+
     return (
-        <div className={start || end ? (start ? "flex padding-right" : "flex padding-left") : "inputContainer"}>
+        <div className={start || end ? (start ? "flex" : "flex") : "inputContainer"}>
             <div className={"row"}>
                 <a className={"textLabel"}>{label}</a>
             </div>
             <div className={"row"}>
                 <input
+                    disabled={disabled}
                     type={"number"}
                     placeholder={placeholder}
-                    className={(canNull && text !== "") || start ? (end ? "startInput endInput" : "startInput") : (end ? "endInput" : undefined)}
-                    value={text}
+                    className={(canNull && text !== null) || start ? (end ? "startInput endInput" : "startInput") : (end ? "endInput" : undefined)}
+                    value={text === null ? "" : text}
                     onChange={(event) => {
                         let result = event.target.value;
                         const isValid = /^[0-9-]+$/.test(result);
@@ -40,12 +44,12 @@ export default function NumericInput(props) {
                         updateValue(result);
                     }}/>
                 {
-                    canNull && text !== "" ?
+                    canNull && text !== null && !disabled ?
                         <input
                             type={"button"}
                             className={"endInput"}
                             value={"Supprimer"}
-                            onClick={() => {updateValue("")}}/> : null
+                            onClick={() => {updateValue(null)}}/> : null
                 }
             </div>
         </div>
@@ -53,7 +57,10 @@ export default function NumericInput(props) {
 }
 
 NumericInput.propTypes = {
-    initialValue: PropTypes.number,
+    initialValue: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
     placeholder: PropTypes.string,
     label: PropTypes.string,
     onChange: PropTypes.func,
@@ -62,10 +69,12 @@ NumericInput.propTypes = {
     canNull: PropTypes.bool,
     start: PropTypes.bool,
     end: PropTypes.bool,
+    disabled: PropTypes.bool,
+    reset: PropTypes.bool,
 };
 
 NumericInput.defaultProps = {
-    initialValue: "",
+    initialValue: null,
     placeholder: "",
     label: "",
     onChange: () => {},
@@ -74,4 +83,6 @@ NumericInput.defaultProps = {
     canNull: false,
     start: false,
     end: false,
+    disabled: false,
+    reset: true,
 }

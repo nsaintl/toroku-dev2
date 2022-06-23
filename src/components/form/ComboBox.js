@@ -6,18 +6,23 @@ import i18next from "i18next";
 
 export default function ComboBox(props) {
 
-    const { initialValue, onChange, label, choices, start, end } = props;
+    const { initialValue, onChange, label, choices, start, end, disabled, reset } = props;
 
     const translate = i18next.t("MediaType", { returnObjects: true});
 
     const [currentSelection, setCurrentSelection] = React.useState(initialValue);
 
+    React.useEffect(() => {
+        setCurrentSelection(initialValue);
+    }, [reset]);
+
     return (
-        <div className={start || end ? (start ? "flex padding-right" : "flex padding-left") : "inputContainer"}>
+        <div className={start || end ? (start ? "flex" : "flex") : "inputContainer"}>
             <div className={"row"}>
                 <a className={"textLabel"}>{label}</a>
             </div>
             <select
+                disabled={disabled}
                 className={start ? (end ? "startInput endInput" : "startInput") : (end ? "endInput" : undefined)}
                 value={currentSelection}
                 onChange={(event) => {
@@ -43,6 +48,8 @@ ComboBox.propTypes = {
     choices: PropTypes.array,
     start: PropTypes.bool,
     end: PropTypes.bool,
+    disabled: PropTypes.bool,
+    reset: PropTypes.bool,
 };
 
 ComboBox.defaultProps = {
@@ -52,4 +59,6 @@ ComboBox.defaultProps = {
     choices: [],
     start: false,
     end: false,
+    disabled: false,
+    reset: true,
 }

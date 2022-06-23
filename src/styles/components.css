@@ -1,3 +1,7 @@
+input::placeholder, textarea::placeholder {
+    color: #AAAAAA;
+}
+
 img {
     height: 150px;
     aspect-ratio: 1;
@@ -5,25 +9,68 @@ img {
     object-fit: cover;
 }
 
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+}
+
 input[type="file"] {
     display: none;
 }
 
-input[type="submit"] {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+input[type="color"]:hover {
+    border-color: #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+}
+
+input[type="color"] {
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+input[type="color"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
+input[type="submit"], input[type="color"] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+input[type="submit"]:hover:not([disabled]) {
     background-color: #F20732;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .button:hover {
     background-color: #F20732;
     color: #FFFFFF;
+}
+
+.error {
+    display: flex;
+    height: 30px;
+    width: calc(100% - 10px * 2);
+    border-radius: 100px;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    outline: none;
+    font-family: inherit;
+    cursor: default;
+    border-color: #F20732;
+    border-width: 1px;
+    border-style: solid;
+    align-items: center;
+    color: #F20732;
+    justify-content: center;
+    background-color: #F2073240;
 }
 
 input, .input, select {
@@ -41,6 +88,7 @@ input, .input, select {
 
 select {
     width: 100%;
+    padding: 0 6px;
 }
 
 .input {
@@ -82,7 +130,7 @@ input:focus, textarea {
     display: flex;
     font-size: 14px;
     color: #FFFFFF;
-    margin-left: 5px;
+    margin-left: 10px;
     margin-bottom: 1px;
 }
 
@@ -92,25 +140,35 @@ input:focus, textarea {
     align-items: flex-end;
 }
 
+.check-box:focus {
+    border-color: #F20732;
+}
+
 .check-box.active {
     border-color: #F20732;
     background-color: #F20732;
     color: #FFFFFF;
 }
 
-.check-box.active:hover {
+.check-box.active:hover:not([disabled]) {
     border-color: #999999;
     background-color: #F20732;
     color: #999999;
 }
 
-.inactive, .check-box.inactive:hover {
+.check-box.inactive {
+    border-color: #999999;
+    background-color: #161616;
+    color: #999999;
+}
+
+.inactive, .check-box.inactive:hover:not([disabled]) {
     border-color: #F20732;
     background-color: #161616;
     color: #FFFFFF;
 }
 
-input[type="button"].active, input[type="button"]:hover, input[type="button"].endInput:hover {
+input[type="button"].active, input[type="button"]:hover:not([disabled]), input[type="button"].endInput:hover {
     background-color: #F20732;
     color: #FFFFFF;
 }
@@ -122,6 +180,11 @@ input[type="button"] {
     color: #999999;
     cursor: pointer;
     border-radius: 0;
+}
+
+input[type="button"].check-box:disabled {
+    cursor: default;
+    opacity: 1;
 }
 
 input[type="button"].check-box {
@@ -140,18 +203,19 @@ input[type="button"].endInput {
     width: auto;
     height: 30px;
     font-size: 16px;
-    background-color: #161616;
     color: #FFFFFF;
     cursor: pointer;
     border-radius: 0 15px 15px 0;
     border-style: solid;
     border-color: #E1EDFF;
-    border-width: 2px;
+    border-width: 0;
+    background-color: #F20732;
 }
 
 .endInput {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    margin-left: 2px;
 }
 
 .startInput {
@@ -167,4 +231,10 @@ input[type="button"].endInput {
     border-color: #999999;
     border-radius: 5px;
     margin-right: 5px;
+}
+
+input:disabled, textarea:disabled, select:disabled {
+    background-color: #161616;
+    color: #FFFFFF;
+    opacity: 1;
 }

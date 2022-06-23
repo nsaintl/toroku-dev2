@@ -3,13 +3,19 @@ import React from "react";
 
 export default function CheckBox(props) {
 
-    const { label, initialValue, onChange } = props;
+    const { label, initialValue, onChange, disabled, reset } = props;
 
     const [enable, setEnable] = React.useState(initialValue);
+
+    React.useEffect(() => {
+        setEnable(initialValue);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [reset]);
 
     return (
         <div className={"inputContainer"}>
             <input
+                disabled={disabled}
                 className={enable ? "check-box active" : "check-box inactive"}
                 type={"button"}
                 value={label}
@@ -24,10 +30,14 @@ export default function CheckBox(props) {
 CheckBox.propTypes = {
     label: PropTypes.string.isRequired,
     initialValue: PropTypes.bool,
-    onPress: PropTypes.func,
+    onChange: PropTypes.func,
+    disabled: PropTypes.bool,
+    reset: PropTypes.bool,
 };
 
 CheckBox.defaultProps = {
-    onPress: () => {},
+    onChange: () => {},
     initialValue: false,
+    disabled: false,
+    reset: true,
 }

@@ -5,9 +5,23 @@ body {
     color: #FFFFFF;
 }
 
+.page {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 76px);
+}
+
 .background {
     width: 100%;
-    height: calc(100vh - 76px);
+    overflow: auto;
+}
+
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.scroll {
     overflow: auto;
 }
 
@@ -25,4 +39,55 @@ form {
 
 .flex {
     flex: 1;
+}
+
+.submit {
+    background: #161616AA;
+}
+
+.react-confirm-alert-body {
+    background-color: #161616;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.react-confirm-alert-button-group {
+    align-items: center;
+    justify-content: center;
+}
+
+.react-confirm-alert-button-group > button {
+    background: #E1EDFF;
+    color: #000000;
+    font-size: 14px;
+    border-radius: 30px;
+}
+
+.react-confirm-alert-button-group > button:hover {
+    background: #F20732;
+    color: #FFFFFF;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.relative {
+    position: relative;
 }

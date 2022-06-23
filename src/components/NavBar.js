@@ -1,16 +1,46 @@
-import React, { useState } from "react"
-import "../styles/NavBar.css"
-import Gradient from 'rgt'
-import TorokuIcon from '../assets/images/icon_toroku_red.png';
+import React, { useState } from "react";
+import "../styles/NavBar.css";
+import Gradient from 'rgt';
+import TorokuIcon from '../assets/images/icons/icon_toroku_red.png';
 import {useLocation} from "react-router-dom";
 import {links} from "../Constant";
+import PropTypes from "prop-types";
 
-export default function NavBar() {
+export default function NavBar(props) {
+
+    const { isConnected } = props;
+
     const [isNavExpanded, setIsNavExpanded] = useState(false);
     const location = useLocation();
 
+    if(!isConnected) {
+        return (
+            <nav className="navigation no-select">
+
+                <a href="/">
+                    <div className="toroku-logo-container">
+                        <div className="toroku-logo">
+                            <img src={TorokuIcon} alt={""} color="#F20732"
+                                 style={{
+                                     width: "100%",
+                                     height: "100%",
+                                     margin: 0,
+                                 }}/>
+                        </div>
+                    </div>
+                </a>
+                <a href="/" className="brand-name">
+                    Toro
+                    <Gradient dir="left-to-right" from="#F20732" to="#EF0A62">
+                        ku.dev
+                    </Gradient>
+                </a>
+            </nav>
+        );
+    }
+
     return (
-        <nav className="navigation">
+        <nav className="navigation no-select">
 
             <a href="/">
                 <div className="toroku-logo-container">
@@ -69,4 +99,12 @@ export default function NavBar() {
             </div>
         </nav>
     );
+}
+
+NavBar.propTypes = {
+    isConnected: PropTypes.bool,
+};
+
+NavBar.defaultProps = {
+    isConnected: false,
 }

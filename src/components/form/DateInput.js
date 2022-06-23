@@ -1,14 +1,22 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import PropTypes from 'prop-types';
 import React from "react";
-import LanguageButton from "./LanguageButton";
-import {tabsLanguages} from "../../Constant";
 import moment from "moment";
+import {isValidDate} from "../../Constant";
 
 export default function DateInput(props) {
 
-    const { initialValue, placeholder, onChange, label, min, max, onlyDate } = props;
+    const { initialValue, placeholder, onChange, label, min, max, onlyDate, disabled, reset } = props;
 
-    const [text, setText] = React.useState(onlyDate ? moment(initialValue).format("YYYY-MM-DD") : moment(initialValue).format("YYYY-MM-DDTHH:mm"));
+    const initialDate = initialValue === null ? null : new Date(initialValue);
+    const init = !isValidDate(initialDate) ? "" : (onlyDate ? moment(initialValue).format("YYYY-MM-DD") : moment(initialValue).format("YYYY-MM-DDTHH:mm"));
+    const [text, setText] = React.useState(init);
+    React.useEffect(() => {
+        const initialDate = initialValue === null ? null : new Date(initialValue);
+        const init = !isValidDate(initialDate) ? "" : (onlyDate ? moment(initialValue).format("YYYY-MM-DD") : moment(initialValue).format("YYYY-MM-DDTHH:mm"));
+        setText(init);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [reset]);
 
     return (
         <div className={"inputContainer"}>
@@ -16,6 +24,7 @@ export default function DateInput(props) {
                 <a className={"textLabel"}>{label}</a>
             </div>
             <input
+                disabled={disabled}
                 type={onlyDate? "date" : "datetime-local"}
                 placeholder={placeholder}
                 value={text}
@@ -38,6 +47,8 @@ DateInput.propTypes = {
     min: PropTypes.string,
     max: PropTypes.string,
     onlyDate: PropTypes.bool,
+    disabled: PropTypes.bool,
+    reset: PropTypes.bool,
 };
 
 DateInput.defaultProps = {
@@ -46,4 +57,6 @@ DateInput.defaultProps = {
     label: "",
     onChange: () => {},
     onlyDate: false,
+    disabled: false,
+    reset: true,
 }

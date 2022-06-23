@@ -1,19 +1,14 @@
 import React from 'react';
 import TextInput from "../components/form/TextInput";
 import Submit from "../components/form/Submit";
-import {useTranslation} from "react-i18next";
-import i18next from "i18next";
-import TextArea from "../components/form/TextArea";
-import {tabsLanguages, initTabsObject} from "../Constant";
+import {t} from "i18next";
+import {tabsLanguages, initTabsObject, isValidDate} from "../Constant";
 import NumericInput from "../components/form/NumericInput";
 import DateInput from "../components/form/DateInput";
-import moment from "moment";
 
 export default function Episode() {
 
-    const { t } = useTranslation();
-
-    const translate = i18next.t("Episode", { returnObjects: true});
+    const translate = t("Episode", { returnObjects: true});
 
     const episode = React.useRef(1);
     const title = React.useRef(initTabsObject(tabsLanguages));
@@ -52,7 +47,7 @@ export default function Episode() {
                 <DateInput
                     initialValue={date.current}
                     label={translate["Date"]}
-                    onChange={(text) => date.current = new Date(text)}/>
+                    onChange={(text) => date.current = isValidDate(new Date(text)) ? new Date(text) : null}/>
                 <Submit name={translate["Submit"]}/>
             </form>
         </div>

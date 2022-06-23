@@ -5,11 +5,18 @@ import {tabsLanguages} from "../../Constant";
 
 export default function TextInput(props) {
 
-    const { initialValue, placeholder, onChange, label, password, hasTabs, tabs } = props;
+    let { initialValue, placeholder, onChange, label, password, hasTabs, tabs, disabled, reset } = props;
 
     const [update, setUpdate] = React.useState(true);
     const [text, setText] = React.useState(initialValue);
     const [currentTab, setCurrentTab] = React.useState(tabs[0].key);
+
+    React.useEffect(() => {
+        setText(initialValue);
+    }, [reset]);
+
+    const currentText = hasTabs ? text[currentTab] : text;
+    placeholder = disabled && currentText === "" ? "" : placeholder;
 
     return (
         <div className={"inputContainer"}>
@@ -30,9 +37,10 @@ export default function TextInput(props) {
                 }
             </div>
             <input
+                disabled={disabled}
                 type={password ? "password" : "text"}
                 placeholder={placeholder}
-                value={hasTabs ? text[currentTab] : text}
+                value={currentText}
                 onChange={(event) => {
                     let result = event.target.value;
                     if(hasTabs) {
@@ -58,6 +66,8 @@ TextInput.propTypes = {
     password: PropTypes.bool,
     hasTabs: PropTypes.bool,
     tabs: PropTypes.array,
+    disabled: PropTypes.bool,
+    reset: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
@@ -68,4 +78,6 @@ TextInput.defaultProps = {
     password: false,
     hasTabs: false,
     tabs: tabsLanguages,
+    disabled: false,
+    reset: true,
 }

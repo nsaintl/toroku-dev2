@@ -1,6 +1,24 @@
-
+/*eslint-disable no-self-compare*/
 
 export const links = [
+    {
+        link: "/universe",
+        name: "Univers"
+    },
+    {
+        link: "/tag",
+        name: "Tag"
+    },
+    {
+        link: "/media",
+        name: "Média"
+    },
+    {
+        link: "/character",
+        name: "Personnage"
+    },
+];
+export const linksAdmin = [
     {
         link: "/universe",
         name: "Univers"
@@ -47,6 +65,12 @@ export const initTabsObject = (array) => {
     return result;
 }
 
+export const tabsLanguagesTitle = [
+    {displayName:"FR", key:"french"},
+    {displayName:"EN", key:"english"},
+    {displayName:"ROM", key:"romaji"}
+];
+
 export const tabsLanguages = [
     {displayName:"FR", key:"french"},
     {displayName:"EN", key:"english"}
@@ -62,6 +86,7 @@ export const mediaType = [
 ]
 
 export const seasonalAiring = [
+    {displayName:"Undefined", key:"UNDEFINED"},
     {displayName:"Winter", key:"WINTER"},
     {displayName:"Spring", key:"SPRING"},
     {displayName:"Summer", key:"SUMMER"},
@@ -69,12 +94,13 @@ export const seasonalAiring = [
 ]
 
 export const genderList = [
-    {displayName:"Male", key:"FEMALE"},
-    {displayName:"Female", key:"MALE"},
+    {displayName:"Undefined", key:"UNDEFINED"},
+    {displayName:"Male", key:"MALE"},
+    {displayName:"Female", key:"FEMALE"},
 ]
 
-export const isValid = function (date) {
-    // An invalid date object returns NaN for getTime() and NaN is the only
-    // object not strictly equal to itself.
+export const isValidDate = function (date) {
+
+    if(date === null) return false;
     return date.getTime() === date.getTime();
 };

@@ -5,11 +5,18 @@ import LanguageButton from "./LanguageButton";
 
 export default function TextArea(props) {
 
-    const { initialValue, placeholder, onChange, label, hasTabs, tabs } = props;
+    let { initialValue, placeholder, onChange, label, hasTabs, tabs, disabled, reset } = props;
 
     const [update, setUpdate] = React.useState(true);
     const [text, setText] = React.useState(initialValue);
     const [currentTab, setCurrentTab] = React.useState(tabs[0].key);
+
+    React.useEffect(() => {
+        setText(initialValue);
+    }, [reset]);
+
+    const currentText = hasTabs ? text[currentTab] : text;
+    placeholder = disabled && currentText === "" ? "" : placeholder;
 
     return (
         <div className={"inputContainer"}>
@@ -30,8 +37,9 @@ export default function TextArea(props) {
                 }
             </div>
             <textarea
+                disabled={disabled}
                 placeholder={placeholder}
-                value={hasTabs ? text[currentTab] : text}
+                value={currentText}
                 onChange={(event) => {
                     let result = event.target.value;
                     if(hasTabs) {
@@ -56,6 +64,8 @@ TextArea.propTypes = {
     onChange: PropTypes.func,
     hasTabs: PropTypes.bool,
     tabs: PropTypes.array,
+    disabled: PropTypes.bool,
+    reset: PropTypes.bool,
 };
 
 TextArea.defaultProps = {
@@ -65,4 +75,6 @@ TextArea.defaultProps = {
     onChange: () => {},
     hasTabs: false,
     tabs: tabsLanguages,
+    disabled: false,
+    reset: true,
 }

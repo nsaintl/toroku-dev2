@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from "../components/form/TextInput";
 import Submit from "../components/form/Submit";
 import {useTranslation} from "react-i18next";
-import {genderList, isValid} from "../Constant";
+import {genderList, isValidDate} from "../Constant";
 import ComboBox from "../components/form/ComboBox";
 import DateInput from "../components/form/DateInput";
 import Image from "../components/form/Image";
@@ -47,12 +47,12 @@ export default function Staff() {
                     onlyDate
                     initialValue={birthDate.current}
                     label={translate["BirthDate"]}
-                    onChange={(text) => birthDate.current = isValid(new Date(text)) ? new Date(text) : null}/>
+                    onChange={(text) => birthDate.current = isValidDate(new Date(text)) ? new Date(text) : null}/>
                 <DateInput
                     onlyDate
                     initialValue={deathDate.current}
                     label={translate["DeathDate"]}
-                    onChange={(text) => deathDate.current = isValid(new Date(text)) ? new Date(text) : null}/>
+                    onChange={(text) => deathDate.current = isValidDate(new Date(text)) ? new Date(text) : null}/>
                 <Image
                     initialValue={image.current}
                     label={translate["Image"]}

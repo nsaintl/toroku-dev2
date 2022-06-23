@@ -1,17 +1,20 @@
 {
   "Universe": {
     "Name": "Nom de l'univers",
+    "Deployed": "Déployer l'univers",
     "Submit": "Soumettre l'univers"
   },
   "Tag": {
     "Name": "Nom du tag",
     "Description": "Description du tag",
+    "Deployed": "Déployer le tag",
     "Submit": "Soumettre le tag",
     "ExampleName": "Dragons",
     "ExampleDescription": "Met en scène des créatures généralement représentés comme ayant des ailes et pouvant cracher du feu."
   },
   "Studio": {
     "Name": "Nom du studio",
+    "Deployed": "Déployer le studio",
     "Submit": "Soumettre le studio"
   },
   "Episode": {
@@ -19,6 +22,7 @@
     "Title": "Titre de l'épisode",
     "Link": "Lien vers l'épisode",
     "Date": "Date de publication",
+    "Deployed": "Déployer l'épisode",
     "Submit": "Soumettre l'épisode",
     "ExampleTitle": "À toi qui vis 2000 ans plus tard"
   },
@@ -27,6 +31,7 @@
     "Type": "Type de média",
     "IsAdult": "Destiné aux adultes",
     "Episode": "Nombre d'épisode",
+    "EpisodeDuration": "Durée d'un épisode (en minute)",
     "Description": "Description du média",
     "Seasonal": "Période saisonnière",
     "SeasonalYear": "Année",
@@ -35,6 +40,7 @@
     "Trailer": "Bande-annonce (lien Youtube)",
     "Cover": "Choisir une couverture",
     "Banner": "Choisir une bannière",
+    "Deployed": "Déployer le média",
     "Submit": "Soumettre le média",
     "ExampleTitle": "L'Attaque des Titans",
     "ExampleDescription": "Il y a 107 ans, les Titans ont presque exterminé la race humaine. Ces Titans mesurent principalement une dizaine de mètres et..."
@@ -45,6 +51,7 @@
     "Age": "Age du personnage",
     "Description": "Description du personnage",
     "Image": "Choisir une image",
+    "Deployed": "Déployer le personnage",
     "Submit": "Soumettre le personnage",
     "ExampleAge": "23 (Physique), 77 (Actuel)",
     "ExampleDescription": "L'un des membres de l'équipe de chasseurs de primes de la série animée Cowboy Bebop. On la voit souvent avec une cigarette et dans une tenue révélatrice comprenant un pantalon..."
@@ -55,12 +62,27 @@
     "BirthDate": "Date de naissance du staff",
     "DeathDate": "Date de mort du staff",
     "Image": "Choisir une image",
+    "Deployed": "Déployer le staff",
     "Submit": "Soumettre le staff"
+  },
+  "Theme": {
+    "Image": "Choisir une image de fond",
+    "BackgroundColor": "Couleur de fond (en bas)",
+    "ForegroundColor": "Couleur de l'écriture (en bas)",
+    "CalendarColor": "Couleur du calendrier",
+    "IsFullheight": "Image taille complète",
+    "StatusBarStyle": "Barre de navigation (en bas)",
+    "NavigationBarStyle": "Barre de status (en haut)",
+    "Deployed": "Déployer le thème",
+    "Submit": "Soumettre le thème"
   },
   "Sign": {
     "Username": "Nom d'utilisateur (email)",
     "Password": "Mot de passe",
-    "Connect": "Se connecter"
+    "Connect": "Se connecter",
+    "Disconnect": "Se déconnecter",
+    "NewPassword": "Nouveau mot de passe",
+    "SubmitNewPassword": "Définir le nouveau mot de passe"
   },
   "MediaType": {
     "Anime": "Anime",
@@ -75,7 +97,29 @@
     "Summer": "Été (Juillet - Aout - Septembre)",
     "Fall": "Automne (Octobre - Novembre - Décembre)",
 
+    "Undefined": "Non défini",
     "Male": "Homme",
     "Female": "Femme"
+  },
+  "Modal": {
+    "ConfirmSubmitTitle": "Envoi du formulaire",
+    "ConfirmSubmitMessage": "Êtes-vous sûr de vouloir envoyer ce formulaire ?",
+    "ConfirmDeleteTitle": "Effacement d'éllément",
+    "ConfirmDeleteMessage": "Êtes-vous sûr de vouloir envoyer effacer cet élément ?",
+    "Yes": "Oui",
+    "No": "Non"
+  },
+  "SideBar": {
+    "Search": "Rechercher"
+  },
+  "Global": {
+    "Delete": "Supprimer",
+    "Submitter": "Envoyeur",
+    "Validator": "Vérificateur",
+    "Error": "Erreur",
+    "Undefined": "Indéfini",
+    "Day": "Jour",
+    "Month": "Mois",
+    "Year": "Année"
   }
 }
